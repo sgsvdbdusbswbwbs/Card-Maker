@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Year Greetings Card</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #cardContainer {
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        input, select, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #2ecc71;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #27ae60;
+        }
+
+        .greetings-text {
+            font-size: 18px;
+            margin-top: 20px;
+            color: #e74c3c;
+            font-family: 'Verdana', sans-serif;
+            white-space: pre-wrap; /* Preserve line breaks */
+        }
+
+        .screenshot-text {
+            font-size: 14px;
+            margin-top: 10px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div id="cardContainer">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgM5C8ngCh5NSRY7I_ypqIM4eUTDKarFiJeYTI6DZ2aQb0v2h21iLdAMyU9S2aZCoSgys120TGD5ZLL7tgmXNjkAj2kiSnOXGn-A7G1SveWWgbUAyWOpsTU5lGM__pwbTqDBXAMHzdPa95mnYIES7OCEWQvP8-evZKo7GxAEwqE6siKJS0xlol5SDidleAj/s2828/Picsart_23-12-31_18-15-13-407.png" alt="New Year Card Template">
+
+        <label for="userName"> Name:</label>
+        <input type="text" id="userName" name="userName" required>
+
+        <label for="greetingType">Select Greetings:</label>
+        <select id="greetingType" name="greetingType">
+            <option value="happyNewYear">Happy New Year!</option>
+            <option value="custom">Custom Greetings</option>
+            <option value="wishingYou">Wishing you joy and success in 2024!</option>
+            <option value="prosperousYear">Wishing you a prosperous New Year!</option>
+            <!-- Add more greetings as needed -->
+        </select>
+
+        <label for="customGreetings">
+            --or-- [Custom Greetings]:</label>
+        <textarea id="customGreetings" name="customGreetings" rows="4" style="resize: none;"></textarea>
+
+        <button onclick="generateCard()">Save Greetings Card</button>
+        <p class="screenshot-text">Take screenshot, crop & share!</p>
+    </div>
+
+    <script>
+        function generateCard() {
+            const userName = document.getElementById('userName').value;
+            const greetingType = document.getElementById('greetingType').value;
+            const customGreetings = document.getElementById('customGreetings').value;
+
+            let greetingsText = '';
+
+            if (greetingType === 'happyNewYear') {
+                greetingsText = 'Happy New Year!';
+            } else if (greetingType === 'custom') {
+                greetingsText = customGreetings;
+            } else if (greetingType === 'wishingYou') {
+                greetingsText = 'Wishing you joy and success in 2024!';
+            } else if (greetingType === 'prosperousYear') {
+                greetingsText = 'Wishing you a prosperous New Year!';
+            }
+            // Add more conditions for other greetings as needed
+
+            const cardContainer = document.getElementById('cardContainer');
+            const cardContent = `
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiiQlfv-5p7AXdk1-Jl8s41RS8yM2RP5lKPijhuj4oBLZauDHirmWyfv37FZqQSkvFEgSwqO9woe0j9cERFAJtXVXZNgwVe7cLVDcfBb6eHxbSL0BBz-Vc2Q2fsEFk58BknDNM77pmnHtedsiTbF4RujMVlr5diXADtJ8HGyKU1pd-o3P0bTeYxNT-TmMBE/s2828/Picsart_23-12-31_13-11-38-012.png" alt="New Year Card Template">
+                <p style="font-size: 24px; margin-top: 10px;"><b>${userName}</b></p>
+                <p class="greetings-text">${greetingsText}</p>
+            `;
+
+            cardContainer.innerHTML = cardContent;
+        }
+    </script>
+</body>
+</html>
